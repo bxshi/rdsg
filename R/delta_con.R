@@ -122,6 +122,23 @@ init_priors_percent <- function(percent, nnodes) {
   return(rand_mat)
 }
 
+#' Calculate graph similarity by DeltaCon
+#' 
+#' Takes two adjacency list and output the similarity score.
+#' To achieve the best performance, if you have a sparse node index, it is highly suggested that you can change it to a dense one so the matrix can be much smaller.
+#' 
+#' @references D. Koutra, J. T. Vogelstein, and C. Faloutsos: DeltaCon: A Principled Massive-Graph Similarity Function. SIAM 2013: 162–170.
+#' @references D. Koutra, T. Ke, U. Kang, D. H. Chau, H. K. Pao, C. Faloutsos: Unifying Guilt-by-Association Approaches: Theorems and Fast Algorithms. ECML/PKDD (2) 2011: 245-260
+#'   
+#' @param graph1 First adjacency list, two columns, col 1 is starting node and col 2 is end node
+#' @param graph2 Second adjacency list
+#' @param nnodes Maximum index of nodes in graph1 and graph2
+#' @param method Whether "naive" or "fast". Fast will calculate an approximate score but can handle million of nodes, while naive can gives the exact score but has a limitation on node numbers 
+#' @param percent (0,1] For fast DeltaCon, what percentage of nodes will be calculated in each iteration
+#' @param debug If TRUE, the function will gives you the time it spend on each step
+#' @param symmetrical TRUE means undirected graph
+#' @return DeltaCon score of graph1 and graph2
+#' @export
 delta_con <- function(graph1, graph2, nnodes,
                       method = "naive", percent = 0.1, debug = FALSE, symmetrical = TRUE) {
   if(ncol(graph1)!=2 || ncol(graph2)!=2) {
