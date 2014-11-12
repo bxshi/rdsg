@@ -12,5 +12,8 @@
 .Rproj.user
 .Rproj
 *.Rproj
-
 .Rbuildignore
+
+# Roxygen auto-generate files
+NAMESPACE
+man/
