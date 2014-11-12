@@ -1,0 +1,13 @@
+Package: rdsg
+Title: R Package for NDDSG
+Version: 0.0.0.1
+Author: Baoxu(Dash) Shi <bshi@nd.edu>
+Maintainer: Baoxu(Dash) Shi <bshi@nd.edu>
+Description: A handful functions for Notre Dame Data Science Group
+Depends:
+    R (>= 3.1.1),
+    Matrix,
+    SparseM,
+    pracma
+License: WTFPL
+LazyData: true
