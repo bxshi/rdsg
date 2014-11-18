@@ -3,5 +3,4 @@
 export(color)
 export(delta_con)
 export(multiplot)
-export(render_expression)
 export(summarySE)
