@@ -6,6 +6,7 @@ library(grDevices)
 .color_blind_safe_color_scheme = c("#D7191C", "#2C7BB6", "#FDAE61", "#FFFFBF", "#ABD9E9")
 
 #' Return color schemes. 
+#' 
 #' If there are more than 5 lines in a graph, you probably need to reconsider about drawing it. If you insist, all I can give is grey scale colors.
 #' @param data Data frame, if NULL then ignore
 #' @param measurevar Use this to measure unique values in data frame to determine the number of colors we return
