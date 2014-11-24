@@ -137,16 +137,21 @@ init_priors_percent <- function(percent, nnodes) {
 #' @param percent (0,1] For fast DeltaCon, what percentage of nodes will be calculated in each iteration
 #' @param debug If TRUE, the function will gives you the time it spend on each step
 #' @param symmetrical TRUE means undirected graph
+#' @param seed seed you will use for generating samples
 #' @return DeltaCon score of graph1 and graph2
 #' @export
 delta_con <- function(graph1, graph2, nnodes,
-                      method = "naive", percent = 0.1, debug = FALSE, symmetrical = TRUE) {
+                      method = "naive", percent = 0.1, debug = FALSE, symmetrical = TRUE, seed=10) {
   if(ncol(graph1)!=2 || ncol(graph2)!=2) {
     print("Input file should be data.frame with two cols(src dst).")
     return(0);
   }
   colnames(graph1) <- c("src", "dst")
   colnames(graph2) <- c("src", "dst")
+  
+  # Make experiment reproduciable
+  set.seed(seed)
+  
   
   # Construct sparse adjacent matrix from edge list
   node_vector <- NULL
