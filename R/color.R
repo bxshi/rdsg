@@ -19,7 +19,7 @@ color <- function(data=NULL, measurevar=NULL, num=NULL, prefer="color_blind_safe
     color_scheme <- .photocopy_safe_color_scheme
   }
   if (is.null(num)) {
-    if(is.null(data) && is.null(measurevar)) {
+    if(is.null(data) || is.null(measurevar)) {
       return(NULL)
     } else {
       num <- unique(data[, measurevar])
