@@ -13,7 +13,7 @@ library(grDevices)
 #' @param num Number of colors you want, if specified, then data and measurevar are ignored 
 #' @param prefer Preference of colors, color_blind_safe or photocopy_safe
 #' @export
-color <- function(data=NULL, measurevar=NULL, num=NULL, prefer="color_blind_safe") {
+dsg_color <- function(data=NULL, measurevar=NULL, num=NULL, prefer="color_blind_safe") {
   if(prefer == "color_blind_safe") {
     color_scheme <- .color_blind_safe_color_scheme
   } else {
