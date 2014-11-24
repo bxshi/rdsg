@@ -1,18 +1,34 @@
-#' Assign color for each group
-#' 
+library(grDevices)
+
+# Since there is no significant difference between photocopy_safe and color_blind_safe when
+# you print it out using a grey-scale printer, I set .color_blind_safe_color_scheme as default
+.photocopy_safe_color_scheme =  c("#D7191C", "#2B83BA", "#FDAE61", "#FFFFBF", "#ABDDA4")
+.color_blind_safe_color_scheme = c("#D7191C", "#2C7BB6", "#FDAE61", "#FFFFBF", "#ABD9E9")
+
+#' Return color schemes. 
+#' If there are more than 5 lines in a graph, you probably need to reconsider about drawing it. If you insist, all I can give is grey scale colors.
+#' @param data Data frame, if NULL then ignore
+#' @param measurevar Use this to measure unique values in data frame to determine the number of colors we return
+#' @param num Number of colors you want, if specified, then data and measurevar are ignored 
+#' @param prefer Preference of colors, color_blind_safe or photocopy_safe
 #' @export
-color <- function(data=NULL, measurevar=NULL, colorvar="color", color_list=NULL) {
-  if (is.null(color_list)) {
-    color_list <- c("red", "green", "blue", "deeppink", "coral1", "black", "yellow3")
+color <- function(data=NULL, measurevar=NULL, num=NULL, prefer="color_blind_safe") {
+  if(prefer == "color_blind_safe") {
+    color_scheme <- .color_blind_safe_color_scheme
+  } else {
+    color_scheme <- .photocopy_safe_color_scheme
+  }
+  if (is.null(num)) {
+    if(is.null(data) && is.null(measurevar)) {
+      return(NULL)
+    } else {
+      num <- unique(data[, measurevar])
+    }
   }
   
-  # Get unique vars
-  uniq_var <- unique(data[, measurevar])
-  
-  if(length(uniq_var) > length(color_list)) {
-    color_list <- rep(color_list, ceiling(length(uniq_var) / color_list))
+  if(num <= 5) {
+    return (head(color_scheme,num))
+  } else {
+    return(grey.colors(num))
   }
-  
-  colors <- apply(data, 1, function(x) color_list[which(uniq_var == x[which(colnames(data) == measurevar)])])
-  return(cbind(colors, data))
 }

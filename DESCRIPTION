@@ -10,6 +10,7 @@ Depends:
     SparseM,
     pracma,
     grid,
-    doBy
+    doBy,
+    grDevices
 License: WTFPL
 LazyData: true
