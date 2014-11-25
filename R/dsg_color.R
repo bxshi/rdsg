@@ -2,8 +2,8 @@ library(grDevices)
 
 # Since there is no significant difference between photocopy_safe and color_blind_safe when
 # you print it out using a grey-scale printer, I set .color_blind_safe_color_scheme as default
-.photocopy_safe_color_scheme =  c("#D7191C", "#2B83BA", "#FDAE61", "#FFFFBF", "#ABDDA4")
-.color_blind_safe_color_scheme = c("#D7191C", "#2C7BB6", "#FDAE61", "#FFFFBF", "#ABD9E9")
+.photocopy_safe_color_scheme =  c("#D7191C","#FDAE61", "#FFFFBF", "#2B83BA", "#ABDDA4")
+.color_blind_safe_color_scheme = c("#D7191C", "#FDAE61", "#FFFFBF", "#2C7BB6", "#ABD9E9")
 
 #' Return color schemes. 
 #' 
