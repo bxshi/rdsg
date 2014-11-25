@@ -2,5 +2,6 @@
 
 export(delta_con)
 export(dsg_color)
+export(dsg_theme)
 export(multiplot)
 export(summarySE)

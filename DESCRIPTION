@@ -11,6 +11,7 @@ Depends:
     pracma,
     grid,
     doBy,
-    grDevices
+    grDevices,
+    ggplot2
 License: WTFPL
 LazyData: true
