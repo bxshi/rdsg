@@ -23,7 +23,7 @@ dsg_color <- function(data=NULL, measurevar=NULL, num=NULL, prefer="color_blind_
     if(is.null(data) || is.null(measurevar)) {
       return(NULL)
     } else {
-      num <- unique(data[, measurevar])
+      num <- length(unique(data[, measurevar]))
     }
   }
   
