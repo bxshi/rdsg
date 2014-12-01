@@ -3,5 +3,6 @@
 export(delta_con)
 export(dsg_color)
 export(dsg_theme)
+export(label_function)
 export(multiplot)
 export(summarySE)
