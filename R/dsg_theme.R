@@ -5,22 +5,13 @@ library(ggplot2)
 #' This function will return a simple, minimized theme.
 #' WARNING: Use this function will lose your existing theme settings.
 #' @export
-dsg_theme <- function(font_size = 12) {
+dsg_theme <- function() {
   
   # Set basic theme
-  return(theme_classic(base_size = font_size) + 
+  return(theme_classic() + 
             
             # Advanced settings
             theme(axis.line = element_line(color = "black"),
-                  # No padding/margin between axes
-          
-                  # No panel grid
-                  panel.grid.major = element_blank(),
-                  panel.grid.minor = element_blank(),
-                  # No panel border
-                  panel.border = element_blank(),
-                  # No background
-                  panel.background = element_blank(),
                   # Text settings for scale
                   axis.text = element_text(size=16),
                   # Text settings for axis titles
