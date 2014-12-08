@@ -2,8 +2,9 @@ library(grDevices)
 
 # Since there is no significant difference between photocopy_safe and color_blind_safe when
 # you print it out using a grey-scale printer, I set .color_blind_safe_color_scheme as default
-.photocopy_safe_color_scheme =  c("#D7191C", "#2B83BA", "#FDAE61", "#FFFFBF", "#ABDDA4")
-.color_blind_safe_color_scheme = c("#D7191C", "#2C7BB6", "#FDAE61", "#FFFFBF", "#ABD9E9")
+.photocopy_safe_color_scheme <-  c("#D7191C", "#2B83BA", "#FDAE61", "#FFFFBF", "#ABDDA4")
+.color_blind_safe_color_scheme <- c("#D7191C", "#2C7BB6", "#FDAE61", "#FFFFBF", "#ABD9E9")
+.matlab_color_scheme <- c("#0000FF", "#FF00FF", "#000000", "#FF00FF", "#FF00FF")
 
 #' Return color schemes. 
 #' 
@@ -21,8 +22,10 @@ library(grDevices)
 dsg_color <- function(data=NULL, measurevar=NULL, num=NULL, prefer="color_blind_safe") {
   if(prefer == "color_blind_safe") {
     color_scheme <- .color_blind_safe_color_scheme
-  } else {
+  } else if(prefer == "photo_copy_safe") {
     color_scheme <- .photocopy_safe_color_scheme
+  } else {
+    color_scheme <- .matlab_color_scheme
   }
   if (is.null(num)) {
     if(is.null(data) || is.null(measurevar)) {
